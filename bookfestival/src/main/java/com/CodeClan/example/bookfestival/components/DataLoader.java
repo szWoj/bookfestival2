@@ -97,11 +97,14 @@ public class DataLoader implements ApplicationRunner {
             }
 
             venueList = new ArrayList<>();
-            for (int i = 0; i < jsonArr.length(); i++) {
-                JSONObject jsonObj = jsonArr.getJSONObject(i);
-                Venue venue = new Venue(Utilities.checkIfNull(jsonObj.getJSONObject("venue"), "name"), Utilities.checkIfNull(jsonObj.getJSONObject("venue"), "address"), UtilitiesInt.checkIfNull(jsonObj.getJSONObject("venue"), "phone"),Utilities.checkIfNull(jsonObj.getJSONObject("performance_space"), "wheelchair_access"), UtilitiesInt.checkIfNull(jsonObj.getJSONObject("performance_space"), "capacity"), jsonObj.getDouble("latitude"), jsonObj.getDouble("longitude"));
-                venueList.add(venue);
-            }
+            Venue venue = new Venue(Utilities.checkIfNull(jsonArr.getJSONObject(0).getJSONObject("venue"), "name"), Utilities.checkIfNull(jsonArr.getJSONObject(0).getJSONObject("venue"), "address"), UtilitiesInt.checkIfNull(jsonArr.getJSONObject(0).getJSONObject("venue"), "phone"),Utilities.checkIfNull(jsonArr.getJSONObject(0).getJSONObject("performance_space"), "wheelchair_access"), UtilitiesInt.checkIfNull(jsonArr.getJSONObject(0).getJSONObject("performance_space"), "capacity"), jsonArr.getJSONObject(0).getDouble("latitude"), jsonArr.getJSONObject(0).getDouble("longitude"));
+            venueList.add(venue);
+
+//            for (int i = 0; i < jsonArr.length(); i++) {
+//                JSONObject jsonObj = jsonArr.getJSONObject(i);
+//                Venue venue = new Venue(Utilities.checkIfNull(jsonObj.getJSONObject("venue"), "name"), Utilities.checkIfNull(jsonObj.getJSONObject("venue"), "address"), UtilitiesInt.checkIfNull(jsonObj.getJSONObject("venue"), "phone"),Utilities.checkIfNull(jsonObj.getJSONObject("performance_space"), "wheelchair_access"), UtilitiesInt.checkIfNull(jsonObj.getJSONObject("performance_space"), "capacity"), jsonObj.getDouble("latitude"), jsonObj.getDouble("longitude"));
+//                venueList.add(venue);
+//            }
 
             for (int i = 0; i < venueList.size(); i++) {
                 venueRepository.save(venueList.get(i));
@@ -223,7 +226,7 @@ public class DataLoader implements ApplicationRunner {
             eventList = new ArrayList<>();
             for (int i = 0; i < jsonArr.length(); i++){
                 JSONObject jsonObj = jsonArr.getJSONObject(i);
-                Event event = new Event(Utilities.checkIfNull(jsonObj, "description"),UtilitiesInt.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "price"), Utilities.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "start"), bookList.get(i), venueList.get(i));
+                Event event = new Event(Utilities.checkIfNull(jsonObj, "description"),UtilitiesInt.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "price"), Utilities.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "start"), bookList.get(i), venueList.get(0));
                 eventList.add(event);
             }
 
