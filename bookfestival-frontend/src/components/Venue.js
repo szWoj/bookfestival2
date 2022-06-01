@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import VenueService from '../services/VenueService';
+import Map from './Map';
 
 function VenueComponent() {
 
@@ -16,8 +17,17 @@ function VenueComponent() {
             console.log(response.data);
         });
     };
+
+    const location = {
+        address: '74 Lauriston Place, Edinburgh',
+        lat: 55.945378,
+        lng: -3.198298,
+      }
+
     return (
         <div className = "container">
+
+            <Map/>
             
             <h1 className = "text-center"> Venue </h1>
 
