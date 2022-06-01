@@ -22,9 +22,9 @@ public class Customer {
     @Column(name="email")
     private String email;
 
-    @JsonIgnoreProperties({"customer"})
-    @OneToMany(mappedBy = "customer")
-    private List<Booking> bookings;
+//    @JsonIgnoreProperties({"customer"})
+//    @OneToMany(mappedBy = "customer")
+//    private List<Booking> bookings;
 
     public Customer(String name, int phoneNumber, String email) {
         this.name = name;
@@ -67,11 +67,11 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 }
