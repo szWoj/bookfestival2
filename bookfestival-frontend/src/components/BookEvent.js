@@ -26,7 +26,7 @@ const BookEvent = () => {
         <>
         <h1>Book Event</h1>
         <p>{event.title}</p>
-        <p>Date and time: {event.dateTime}</p>
+        <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
         <button>Book Now</button>
         </>
