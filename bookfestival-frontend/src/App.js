@@ -4,6 +4,7 @@ import VenueComponent from './components/Venue';
 import Home from './components/WhatsOn';
 import SingleEvent from './components/SingleEvent';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import NavBar from './components/NavBar';
 
 
 
@@ -14,7 +15,7 @@ function App(){
     return (   
       <>
       <header>
-        <h1>Navigation</h1>
+        <NavBar />
       </header> 
        <Router>
         <div>
