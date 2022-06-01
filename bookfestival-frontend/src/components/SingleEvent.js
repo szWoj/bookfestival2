@@ -1,15 +1,39 @@
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router';
+import { useState, useEffect} from "react";
+import EventService from "../services/EventService";
 
-const SingleEvent = ({id}) => {
+
+const SingleEvent = () => {
+
+    const {id} = useParams();
+    const[eventId, setEventId] = useState([id])
+    const [event, setEvent] = useState([])
+
+
+    useEffect(() => {
+        getEvents()
+    }, [])
+
+
+    const getEvents = () => {
+
+        EventService.getEvents().then((response) => {
+            setEvent(response.data[eventId])
+            console.log(response.data[eventId]);
+        });
+    };
+
     
-    let {id} = useParams();
+    return (
+    <>
+        <p>{event.description}</p>
+
+    </>
+)
     
-    return (<>
-        <h1>This Event detail</h1>
-        <h2>{this.props.match.params.id}</h2>
-        </>
-    )
 }
+
+
 
 export default SingleEvent;

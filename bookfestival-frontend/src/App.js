@@ -1,15 +1,15 @@
-
 import './App.css';
 import React from 'react';
 import VenueComponent from './components/Venue';
-import Home from './components/Home' 
-import Event from './components/Event1';
+import Home from './components/WhatsOn';
+import SingleEvent from './components/SingleEvent';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
 
 
 function App(){
+
 
     return (   
       <>
@@ -19,9 +19,11 @@ function App(){
        <Router>
         <div>
             <Routes>
-             <Route exact path="/home" element={<Home/>}/>
+
+             <Route exact path="/" element={<Home/>}/>
              <Route exact path="/venues" element={<VenueComponent/>}/>
-             <Route exact path="/event" element={<Event/>}/>
+             <Route exact path="/event/:id" element={<SingleEvent/>}/>
+
            </Routes>
         </div> 
       </Router></>  

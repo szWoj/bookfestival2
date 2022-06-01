@@ -19,7 +19,7 @@ function VenueComponent() {
     return (
         <div className = "container">
             
-            <h1 className = "text-center"> Venue List</h1>
+            <h1 className = "text-center"> Venue </h1>
 
             <table className = "table table-striped">
                 <thead>
