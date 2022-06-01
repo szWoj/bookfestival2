@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App(){
 
+
     return (   
       <>
       <header>
@@ -18,9 +19,11 @@ function App(){
        <Router>
         <div>
             <Routes>
+
              <Route exact path="/" element={<Home/>}/>
              <Route exact path="/venues" element={<VenueComponent/>}/>
              <Route exact path="/event/:id" element={<SingleEvent/>}/>
+
            </Routes>
         </div> 
       </Router></>  
