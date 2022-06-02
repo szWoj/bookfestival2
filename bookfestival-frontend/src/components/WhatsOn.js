@@ -18,10 +18,9 @@ const Home = () => {
 
         EventService.getEvents().then((response) => {
             setEvents(response.data)
-            console.log(response.data);
         });
     };
-
+    
 
     const eventsList = events.map(event => {
         return (
