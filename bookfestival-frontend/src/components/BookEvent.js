@@ -43,11 +43,13 @@ const BookEvent = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
-        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email, booking: {event}})
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
+
+
 
         
     }

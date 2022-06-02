@@ -12,11 +12,13 @@ function VenueComponent() {
 
     const getVenues = () => {
 
-        VenueService.getVenues().then((response) => {
-            setVenues(response.data)
-            console.log(response.data);
-        });
-    };
+            VenueService.getVenues().then((response) => {
+                setVenues(response.data)
+            });
+        };
+
+    
+
     return (
         <div className = "container">
             
@@ -47,7 +49,6 @@ function VenueComponent() {
                                     <td> {venue.capacity }</td>
                                     <td> {venue.latitude }</td>
                                     <td> {venue.longitude }</td>
-
                                 </tr>
 
                         )
