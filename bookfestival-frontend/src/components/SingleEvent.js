@@ -28,7 +28,7 @@ const SingleEvent = () => {
     return (
     <>
         <p>{event.description}</p>
-
+        <Link to={`/book-event/${eventId}`}>Book Event</Link>
     </>
 )
     
