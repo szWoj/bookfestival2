@@ -10,9 +10,15 @@ const BookEvent = () => {
     const{id} = useParams();
     const[eventId, setEventId] = useState([id])
     const [event, setEvent] = useState([])
-    const[nameInput, setNameInput] = useState("")
-    const[phoneInput, setPhoneInput] = useState("")
-    const[emailInput, setEmailInput] = useState("")
+    // const[nameInput, setNameInput] = useState("")
+    // const[phoneInput, setPhoneInput] = useState("")
+    // const[emailInput, setEmailInput] = useState("")
+
+    const[customer, setCustomer] = useState({
+        name: '',
+        phone_number: '',
+        email: '',
+    })
 
     useEffect(() => {
         getEvents()
@@ -26,38 +32,53 @@ const BookEvent = () => {
         });
     };
 
-    const handleNameChange = (evt) => {
-        setNameInput(evt.target.value)
-    }
+    // const handleNameChange = (evt) => {
+    //     setNameInput(evt.target.value)
+    // }
 
-    const handlePhoneChange = (evt) => {
-        setPhoneInput(evt.target.value)
+    // const handlePhoneChange = (evt) => {
+    //     setPhoneInput(evt.target.value)
+    // }
+
+    // const handleEmailChange = (evt) => {
+    //     setEmailInput(evt.target.value)
+    // }
+
+    const handleNameChange = (evt) => {
+        setCustomer({name: evt.target.value})
     }
 
     const handleEmailChange = (evt) => {
-        setEmailInput(evt.target.value)
+        setCustomer({email: evt.target.value})
+    }
+
+    const handlePhoneNumberChange = (evt) => {
+        setCustomer({email: evt.target.value})
     }
 
     const handleSubmit = (evt) => {
-        evt.prevent.default();
+        evt.preventDefault();
+        console.log(evt)
+        setCustomer({name: evt.target.name, phone_number: evt.target.phone_number, email: evt.target.email}, () => console.log(customer.name))
+       
 
-        const customer = {
-            name: nameInput,
-            phone_number: phoneInput,
-            email: emailInput
-            
-        }
 
-        axios.post("http://localhost:8080/customers", customer)
+        axios.post("http://localhost:8080/customers", {name: customer.name, name: customer.phone_number, email: customer.email})
         // axios.post("http://localhost:8080/bookings", customer, event)
         .then(res => {
+            console.log(res);
             console.log(res.data);
         })
+
+        
     }
+
     
+   
 
 
-    return (
+    return ( 
+        
         <>
         <h1>Book Event</h1>
         <p>{event.title}</p>
@@ -66,17 +87,18 @@ const BookEvent = () => {
         <form onSubmit={handleSubmit}>
             <label>
             Name
-                <input type="text" name="name" value={nameInput} onChange={handleNameChange}></input>
             </label>
+            <input type="text" name="name"  onChange={handleNameChange}></input>
             <label>
             Phone number
-                <input type="number" name="phone" value={phoneInput} onChange={handlePhoneChange}></input>
             </label>
+            <input type="number" name="phone_number" onChange={handlePhoneNumberChange}></input>
             <label>
             Email Address
-                <input type="text" name="email" value={emailInput} onChange={handleEmailChange}></input>
+               
             </label>
-            <input type="submit" value="Book Now" />
+            <input type="text" name="email"  onChange={handleEmailChange}></input>
+            <button>Book Now</button>
         </form>
         </>
     )
