@@ -1,46 +1,69 @@
 import React, {useState, useEffect} from 'react'
 import VenueService from '../services/VenueService';
-import Map from './Map';
+import { Loader } from "@googlemaps/js-api-loader"
+import './map.css';
 
 function VenueComponent() {
 
     const [venues, setVenues] = useState([])
+    const [location, setlocation] = useState({
+            lat: 59.945378,
+            lng: -2.198298
+        })
 
     useEffect(() => {
         getVenues()
-    }, [])
+    },[])
+
+    useEffect( () => {
+        if(venues.length){
+            setlocation(
+                {lat: venues[0].latitude, lng: venues[0].longitude}
+            )
+        }
+    }, [venues])
 
     const getVenues = () => {
 
         VenueService.getVenues().then((response) => {
-            setVenues(response.data)
-            console.log(response.data);
+            setVenues(response.data);
         });
+        console.log(venues);
     };
+    
+    const loader = new Loader({
+        apiKey: "AIzaSyCQInXva025Q49z-kxApKSzhtu_zTjqhvo"
+      });
+      
+    loader
+    .load()
+    .then((google) => {
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: location,
+        zoom: 17
+    });
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+      });
+    })
+    .catch (e => {
+        console.log(e)
+    });
 
-    const location = {
-        address: '74 Lauriston Place, Edinburgh',
-        lat: 55.945378,
-        lng: -3.198298,
-      }
 
     return (
         <div className = "container">
 
-            <Map/>
-            
-            <h1 className = "text-center"> Venue </h1>
+            <h2 className="map-h2">Come and Visit Us At the Edinburgh College of Art</h2>
+             <div id="map">
+             </div>
 
             <table className = "table table-striped">
                 <thead>
                     <tr>
-                        <th> Venue's name</th>
-                        <th> Venue's address</th>
-                        <th> Venue's phone number</th>
-                        <th> Venue's disabled Access</th>
-                        <th> Venue's capacity</th>
-                        <th> Venue's latitude</th>
-                        <th> Venue's longitude</th>
+                        <th> Venue name</th>
+                        <th> Venue address</th>
                     </tr>
 
                 </thead>
@@ -51,12 +74,6 @@ function VenueComponent() {
                                 <tr key = {venue.id}>
                                     <td> {venue.name }</td>
                                     <td> {venue.address }</td>
-                                    <td> {venue.phoneNumber }</td>    
-                                    <td> {venue.disabledAccess }</td>
-                                    <td> {venue.capacity }</td>
-                                    <td> {venue.latitude }</td>
-                                    <td> {venue.longitude }</td>
-
                                 </tr>
 
                         )
