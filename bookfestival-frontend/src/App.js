@@ -5,6 +5,7 @@ import Home from './components/WhatsOn';
 import SingleEvent from './components/SingleEvent';
 import BookEvent from './components/BookEvent';
 import Calendar from './components/Calendar';
+import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import EventCalendar from './components/Calendar';
 
@@ -17,7 +18,7 @@ function App(){
     return (   
       <>
       <header>
-        <h1>Navigation</h1>
+        <NavBar/>
       </header> 
        <Router>
         <div>
