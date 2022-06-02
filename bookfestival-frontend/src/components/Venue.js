@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import VenueService from '../services/VenueService';
-import Map from './Map';
+
 
 function VenueComponent() {
 

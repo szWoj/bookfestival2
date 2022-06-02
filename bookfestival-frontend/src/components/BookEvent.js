@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useParams } from 'react-router';
 import { useState, useEffect, Component} from "react";
 import EventService from "../services/EventService";
@@ -10,15 +9,10 @@ const BookEvent = () => {
     const{id} = useParams();
     const[eventId, setEventId] = useState([id])
     const [event, setEvent] = useState([])
-    // const[nameInput, setNameInput] = useState("")
-    // const[phoneInput, setPhoneInput] = useState("")
-    // const[emailInput, setEmailInput] = useState("")
+    const[name, setName] = useState({name: ""})
+    const[phoneNumber, setPhoneNumber] = useState({phoneNumber: ""})
+    const[email, setEmail] = useState({email:""})
 
-    const[customer, setCustomer] = useState({
-        name: '',
-        phone_number: '',
-        email: '',
-    })
 
     useEffect(() => {
         getEvents()
@@ -32,39 +26,24 @@ const BookEvent = () => {
         });
     };
 
-    // const handleNameChange = (evt) => {
-    //     setNameInput(evt.target.value)
-    // }
-
-    // const handlePhoneChange = (evt) => {
-    //     setPhoneInput(evt.target.value)
-    // }
-
-    // const handleEmailChange = (evt) => {
-    //     setEmailInput(evt.target.value)
-    // }
 
     const handleNameChange = (evt) => {
-        setCustomer({name: evt.target.value})
+        setName({name: evt.target.value})
+        console.log(name)
     }
 
     const handleEmailChange = (evt) => {
-        setCustomer({email: evt.target.value})
+        setEmail({email: evt.target.value})
     }
 
     const handlePhoneNumberChange = (evt) => {
-        setCustomer({email: evt.target.value})
+        setPhoneNumber({phoneNumber: evt.target.value})
     }
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(evt)
-        setCustomer({name: evt.target.name, phone_number: evt.target.phone_number, email: evt.target.email}, () => console.log(customer.name))
-       
 
-
-        axios.post("http://localhost:8080/customers", {name: customer.name, name: customer.phone_number, email: customer.email})
-        // axios.post("http://localhost:8080/bookings", customer, event)
+        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -72,9 +51,6 @@ const BookEvent = () => {
 
         
     }
-
-    
-   
 
 
     return ( 
@@ -92,10 +68,9 @@ const BookEvent = () => {
             <label>
             Phone number
             </label>
-            <input type="number" name="phone_number" onChange={handlePhoneNumberChange}></input>
+            <input type="text" name="phoneNumber" onChange={handlePhoneNumberChange}></input>
             <label>
             Email Address
-               
             </label>
             <input type="text" name="email"  onChange={handleEmailChange}></input>
             <button>Book Now</button>
