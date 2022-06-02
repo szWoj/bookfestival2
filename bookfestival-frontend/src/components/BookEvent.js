@@ -50,7 +50,7 @@ const BookEvent = () => {
 
     // }
     const handleSubmit = (evt) => {
-        evt.prevent.default();
+        evt.preventDefault();
         
         axios.post("http://localhost:8080/customers", {
             name: nameInput,
@@ -79,7 +79,7 @@ const BookEvent = () => {
             Email Address
                 <input type="text" name="email" value={emailInput} onChange={handleEmailChange}></input>
             </label>
-            <input type="submit" value="Book Now" />
+            <button type="submit">Book Now</button>
         </form>
         </>
     )
