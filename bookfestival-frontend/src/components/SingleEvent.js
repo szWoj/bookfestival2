@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from 'react-router';
 import { useState, useEffect} from "react";
 import EventService from "../services/EventService";
+import VenueService from "../services/VenueService";
 
 
 const SingleEvent = () => {
@@ -9,12 +10,16 @@ const SingleEvent = () => {
     const {id} = useParams();
     const[eventId, setEventId] = useState([id])
     const [event, setEvent] = useState([])
+    const [venues, setVenues] = useState(["Dummy Venue Name"])
+    // const [venueId, setVenueId] = useState([])
 
     useEffect(() => {
         getEvents()
-        
     }, [])
 
+    useEffect(() => {
+        getVenueName()
+    }, [event])
 
     const getEvents = () => {
 
@@ -23,6 +28,13 @@ const SingleEvent = () => {
             console.log(response.data[eventId])
         });
     };
+
+    const getVenueName = () => {
+        VenueService.getVenues().then((response) => {
+            setVenues(response.data);
+        });
+        console.log(venues);
+    }
 
     const convertToText = (html) => {
         var tempDivElement = document.createElement("div");
@@ -34,7 +46,7 @@ const SingleEvent = () => {
     return (
     <>
         <p>{convertToText(event.description)}</p>
-        <p>Venue : {event.venue.name}</p>
+        <p>Venue : {venues[0].name}</p>
         <p>Date & Time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
         <Link to={`/book-event/${eventId}`}>Book Event</Link>
