@@ -10,9 +10,9 @@ const SingleEvent = () => {
     const[eventId, setEventId] = useState([id])
     const [event, setEvent] = useState([])
 
-
     useEffect(() => {
         getEvents()
+        
     }, [])
 
 
@@ -20,14 +20,23 @@ const SingleEvent = () => {
 
         EventService.getEvents().then((response) => {
             setEvent(response.data[eventId])
-            console.log(response.data[eventId]);
+            console.log(response.data[eventId])
         });
     };
+
+    const convertToText = (html) => {
+        var tempDivElement = document.createElement("div");
+        tempDivElement.innerHTML = html;
+        return tempDivElement.innerText;
+    }
 
     
     return (
     <>
-        <p>{event.description}</p>
+        <p>{convertToText(event.description)}</p>
+        <p>Venue : {event.venue.name}</p>
+        <p>Date & Time: {event.dateTime}</p>
+        <p>Price: £{event.price}</p>
         <Link to={`/book-event/${eventId}`}>Book Event</Link>
     </>
 )
