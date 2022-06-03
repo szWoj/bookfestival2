@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import { useState, useEffect, Component} from "react";
 import EventService from "../services/EventService";
 import axios from "axios";
+import CustomerService from "../services/CustomerService";
 
 
 const BookEvent = () => {
@@ -12,6 +13,7 @@ const BookEvent = () => {
     const[name, setName] = useState({name: ""})
     const[phoneNumber, setPhoneNumber] = useState({phoneNumber: ""})
     const[email, setEmail] = useState({email:""})
+    const[theCustomer, setTheCustomer] = useState([])
 
 
     useEffect(() => {
@@ -22,10 +24,8 @@ const BookEvent = () => {
 
         EventService.getEvents().then((response) => {
             setEvent(response.data[eventId])
-            console.log(response.data[eventId]);
         });
     };
-
 
     const handleNameChange = (evt) => {
         setName({name: evt.target.value})
@@ -43,15 +43,33 @@ const BookEvent = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
-        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email, booking: {event}})
+        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            setTheCustomer(res.data)
+            
+        })
+        
+    }
+
+    useEffect(() => {
+            postBooking()
+    }, [theCustomer])
+
+    const postBooking = () => {
+
+        const booking = {
+            event: event,
+            customer: theCustomer
+        }
+
+        axios.post("http://localhost:8080/bookings", booking)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
-
-
-
-        
+        console.log(booking)
     }
 
 

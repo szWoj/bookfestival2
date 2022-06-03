@@ -3,6 +3,7 @@ import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router';
 
+
 const Home = () => {
 
     const [events, setEvents] = useState([])
