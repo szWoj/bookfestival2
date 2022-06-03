@@ -3,6 +3,7 @@ import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router';
 
+
 const Home = () => {
 
     const [events, setEvents] = useState([])
@@ -18,10 +19,9 @@ const Home = () => {
 
         EventService.getEvents().then((response) => {
             setEvents(response.data)
-            console.log(response.data);
         });
     };
-
+    
 
     const eventsList = events.map(event => {
         return (
