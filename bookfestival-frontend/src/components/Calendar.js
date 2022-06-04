@@ -69,14 +69,15 @@ const getDates = datesAndTimesList.map(date => {
     dates.push(date[0])
 })
 
+// const getMonth = (date) => {
+//     const parts = date.split('-')
+//     return parts[1]
+// }
 
 console.log(times[0])
 console.log(dates[0])
-
-
-
-
-
+console.log(date.getMonth())
+console.log(date.getDate())
 
     return (
         <>
@@ -85,7 +86,7 @@ console.log(dates[0])
             className="calendar"
             value={date}
             onChange={changeDate}
-            tileContent={({ date, view }) => view === 'month' && date.getDay() === 1 ? <p>{}</p> : null}
+            // tileContent={({ date, view }) => view === 'month' && date.getMonth() == getMonth(dates[0]) ? <p>"Hello"</p> : null}
         />
         <p>Current selected date is <b>{moment(date).format('MMMM Do YYYY')}</b></p>
        <div>{eventsList}</div>
