@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router';
+import "./whatson.css"
 
 
 const Home = () => {
@@ -25,7 +26,10 @@ const Home = () => {
 
     const eventsList = events.map(event => {
         return (
+            <>
+            <li><img className = "whats-on-picture" src={event.book.photoUrl}></img></li>
             <li><Link to={`/event/${events.indexOf(event)}`}>{event.book.author.name}</Link></li>
+            </>
         )
     })
 
