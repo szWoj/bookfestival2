@@ -3,6 +3,7 @@ import { useState, useEffect, Component} from "react";
 import EventService from "../services/EventService";
 import axios from "axios";
 import CustomerService from "../services/CustomerService";
+import { Link } from "react-router-dom";
 
 
 const BookEvent = () => {
@@ -84,16 +85,17 @@ const BookEvent = () => {
             <label>
             Name
             </label>
-            <input type="text" name="name"  onChange={handleNameChange}></input>
+            <input type="text" name="name" onChange={handleNameChange}></input>
             <label>
             Phone number
             </label>
-            <input type="text" name="phoneNumber" onChange={handlePhoneNumberChange}></input>
+            <input type="text" name="phoneNumber"onChange={handlePhoneNumberChange}></input>
             <label>
             Email Address
             </label>
-            <input type="text" name="email"  onChange={handleEmailChange}></input>
-            <button>Book Now</button>
+            <input type="text" name="email" onChange={handleEmailChange}></input>
+            <button value={handleSubmit}>Submit</button>
+            <Link to={`/calendar/${theCustomer.id}`}>Book Event</Link>
         </form>
         </>
     )
