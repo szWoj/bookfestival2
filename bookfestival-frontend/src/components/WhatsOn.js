@@ -26,21 +26,21 @@ const Home = () => {
 
     const eventsList = events.map(event => {
         return (
-            <>
-            <li><img className = "whats-on-picture" src={event.book.photoUrl}></img></li>
-            <li><Link to={`/event/${events.indexOf(event)}`}>{event.book.author.name}</Link></li>
-            </>
+            <div className = "whats-on-subgrouping">
+            <img className = "whats-on-picture" src={event.book.photoUrl}></img>
+            <p><Link to={`/event/${events.indexOf(event)}`}>{event.title}</Link></p>
+            </div>
         )
     })
 
 
     return (
-        <>
+        <div>
         <h1>What's On</h1>
-        <ul>
+        <div className = "whats-on-container">
             {eventsList}
-        </ul>
-        </>
+        </div>
+        </div>
 
     )
 }

@@ -56,11 +56,12 @@ const SingleEvent = () => {
     return (
     <div className="single-event-page">
         <img className="single-event-picture" src={book.photoUrl}/>
-        <p>{convertToText(event.description)}</p>
-        <p>Venue : {venue.name}</p>
-        <p>Date & Time: {event.dateTime}</p>
-        <p>Price: £{event.price}</p>
-        <Link to={`/book-event/${eventId}`}>Book Event</Link>
+        <p></p>
+        <p className="single-event-description">{convertToText(event.description)}</p>
+        <p className="single-event-text">Venue : {venue.name}</p>
+        <p className="single-event-text">Date & Time: {event.dateTime}</p>
+        <p className="single-event-text">Price: £{event.price}</p>
+        <p className="single-event-text"><Link to={`/book-event/${eventId}`}>Book Event</Link></p>
     </div>
 )
     
