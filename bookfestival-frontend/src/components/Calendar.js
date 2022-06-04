@@ -53,11 +53,28 @@ const eventsList = events.map(event => {
     )
 })
 
+const datesAndTimesList = []
+const dates = []
+const times = []
 
-const eventsDates = events.map(event => {
-        
-    
+const getEventsDates = events.map(event => {
+    datesAndTimesList.push(event.dateTime.split(' '))
 })
+
+const getTimes = datesAndTimesList.map(time =>{
+    times.push(time[1])
+})
+
+const getDates = datesAndTimesList.map(date => {
+    dates.push(date[0])
+})
+
+
+console.log(times[0])
+console.log(dates[0])
+
+
+
 
 
 
@@ -68,7 +85,7 @@ const eventsDates = events.map(event => {
             className="calendar"
             value={date}
             onChange={changeDate}
-            tileContent={({ date, view }) => view === 'month' && date.getDay() === 1 ? <p>{eventsDates}</p> : null}
+            tileContent={({ date, view }) => view === 'month' && date.getDay() === 1 ? <p>{}</p> : null}
         />
         <p>Current selected date is <b>{moment(date).format('MMMM Do YYYY')}</b></p>
        <div>{eventsList}</div>
