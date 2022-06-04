@@ -12,6 +12,7 @@ const SingleEvent = () => {
     const [event, setEvent] = useState([])
     const [venues, setVenues] = useState(["Dummy Venue Name"])
     const [venueId, setVenueId] = useState([])
+   
 
     useEffect(() => {
         getEvents()
@@ -20,6 +21,8 @@ const SingleEvent = () => {
     useEffect(() => {
         getVenueName()
     }, [event])
+
+
 
     const getEvents = () => {
 
@@ -45,6 +48,8 @@ const SingleEvent = () => {
         });
         console.log(venues);
     }
+
+    
 
     const convertToText = (html) => {
         var tempDivElement = document.createElement("div");

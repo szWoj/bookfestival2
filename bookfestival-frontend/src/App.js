@@ -23,13 +23,11 @@ function App(){
        <Router>
         <div>
             <Routes>
-
              <Route exact path="/" element={<Home/>}/>
              <Route exact path="/venues" element={<VenueComponent/>}/>
              <Route exact path="/event/:id" element={<SingleEvent/>}/>
-             <Route exact path="/calendar" element={<EventCalendar/>}/>
+             <Route exact path="/calendar/:id" element={<EventCalendar/>}/>
              <Route exact path="/book-event/:id" element={<BookEvent/>}/>
-
            </Routes>
         </div> 
       </Router></>  

@@ -81,6 +81,7 @@ function VenueComponent() {
                                     <td> {venue.capacity }</td>
                                     <td> {venue.latitude }</td>
                                     <td> {venue.longitude }</td>
+                                    
 
                                 </tr>
 
