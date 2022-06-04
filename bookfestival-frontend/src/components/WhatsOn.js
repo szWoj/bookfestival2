@@ -25,7 +25,7 @@ const Home = () => {
 
     const eventsList = events.map(event => {
         return (
-            <li><Link to={`/event/${events.indexOf(event)}`}>{event.book.author.name}</Link></li>
+            <li><Link to={`/event/${events.indexOf(event)}`}>{event.title}</Link></li>
         )
     })
 

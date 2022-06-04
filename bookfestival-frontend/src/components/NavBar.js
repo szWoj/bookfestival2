@@ -23,6 +23,8 @@ const NavBar = () => {
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <NavbarBrand href="/venues">Venues</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+                <NavbarBrand href="/calendar">Calendar</NavbarBrand>
+                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
                 <form className="form-inline">
