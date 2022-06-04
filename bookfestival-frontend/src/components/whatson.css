@@ -1,0 +1,17 @@
+h1{text-align: center;
+}
+
+.whats-on-container{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 50px;
+}
+
+.whats-on-subgrouping{
+    flex: 17%;
+}
+
+.whats-on-picture{
+    height: 150px;
+    width: auto;
+}

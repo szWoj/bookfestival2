@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from 'react-router';
 import { useState, useEffect} from "react";
 import EventService from "../services/EventService";
-import VenueService from "../services/VenueService";
+import "./singleevent.css"
 
 
 const SingleEvent = () => {
@@ -10,41 +10,41 @@ const SingleEvent = () => {
     const {id} = useParams();
     const[eventId, setEventId] = useState([id])
     const [event, setEvent] = useState([])
-    const [venues, setVenues] = useState(["Dummy Venue Name"])
-    const [venueId, setVenueId] = useState([])
-
+    const [venue, setVenue] = useState([])
+    const [book, setBook] = useState([])
+    
     useEffect(() => {
         getEvents()
     }, [])
 
     useEffect(() => {
-        getVenueName()
+        getVenue()
+    }, [event])
+
+
+    useEffect(() => {
+        getBook()
     }, [event])
 
     const getEvents = () => {
-
         EventService.getEvents().then((response) => {
             setEvent(response.data[eventId])
-            console.log(response.data[eventId])
-            //get the venue id based on the event id
-            // const tempVenueId = getVenueId(eventId) 
+        })
+    };
+
+    const getBook = () => {
+        EventService.getEvents().then((response) => {
+            setBook(response.data[eventId].book)
         });
     };
 
-    // this function should get the venue id based on the event id
-    // then can feed it into the html instead of 0 in venues[0].name
-    // const getVenueId = (eventId) => {
-    //     VenueService.getVenues().then((response) => {
-    //         setVenueId
-    //     })
-    // }
 
-    const getVenueName = () => {
-        VenueService.getVenues().then((response) => {
-            setVenues(response.data);
+    const getVenue = () => {
+        EventService.getEvents().then((response) => {
+            setVenue(response.data[eventId].venue)
         });
-        console.log(venues);
     }
+
 
     const convertToText = (html) => {
         var tempDivElement = document.createElement("div");
@@ -54,13 +54,15 @@ const SingleEvent = () => {
 
     
     return (
-    <>
-        <p>{convertToText(event.description)}</p>
-        <p>Venue : {venues[0].name}</p>
-        <p>Date & Time: {event.dateTime}</p>
-        <p>Price: £{event.price}</p>
-        <Link to={`/book-event/${eventId}`}>Book Event</Link>
-    </>
+    <div className="single-event-page">
+        <img className="single-event-picture" src={book.photoUrl}/>
+        <p></p>
+        <p className="single-event-description">{convertToText(event.description)}</p>
+        <p className="single-event-text">Venue : {venue.name}</p>
+        <p className="single-event-text">Date & Time: {event.dateTime}</p>
+        <p className="single-event-text">Price: £{event.price}</p>
+        <p className="single-event-text"><Link to={`/book-event/${eventId}`}>Book Event</Link></p>
+    </div>
 )
     
 }

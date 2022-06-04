@@ -76,12 +76,6 @@ function VenueComponent() {
                                 <tr key = {venue.id}>
                                     <td> {venue.name }</td>
                                     <td> {venue.address }</td>
-                                    <td> {venue.phoneNumber }</td>    
-                                    <td> {venue.disabledAccess }</td>
-                                    <td> {venue.capacity }</td>
-                                    <td> {venue.latitude }</td>
-                                    <td> {venue.longitude }</td>
-
                                 </tr>
 
                         )
