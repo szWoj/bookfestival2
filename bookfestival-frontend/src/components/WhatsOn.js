@@ -28,7 +28,7 @@ const Home = () => {
         return (
             <div className = "whats-on-subgrouping">
             <div className = "image-container"><img className = "whats-on-picture" src={event.book.photoUrl}></img>
-            <div class="book-now"><p><Link to={`/book-event/${events.indexOf(event)}`} className="book-now-text">Book Now</Link></p></div></div>
+            <div className="book-now"><p><Link to={`/book-event/${events.indexOf(event)}`} className="book-now-text">Book Now</Link></p></div></div>
             <p><Link to={`/event/${events.indexOf(event)}`} class="event-titles">{event.title}</Link></p>
             </div>
         )
