@@ -21,14 +21,13 @@ const NavBar = () => {
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+                <NavbarBrand href="/calendar">Events Calendar</NavbarBrand>
+                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <NavbarBrand href="/venues">Venue</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
-                <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                
                 {/* <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
