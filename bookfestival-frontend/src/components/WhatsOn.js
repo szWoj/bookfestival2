@@ -8,8 +8,11 @@ import "./whatson.css"
 const Home = () => {
 
     const [events, setEvents] = useState([])
+    const [query, setQuery] = useState("")
 
     const {id} = useParams();
+    // const query = "black"
+    // const filteredEvents = filterEvents(events, query)
 
 
     useEffect(() => {
@@ -22,14 +25,24 @@ const Home = () => {
             setEvents(response.data)
         });
     };
+
+    const filterEvents = (events, query) => {
+        if (!query){
+            return events;
+        }
+        return events.filter((event) => {
+            const eventTitle = event.title.toLowerCase();
+            return eventTitle.includes(query);
+        });
+    }
     
 
-    const eventsList = events.map(event => {
+    const eventsList = filterEvents(events, query).map(event => {
         return (
             <div className = "whats-on-subgrouping">
             <div className = "image-container"><img className = "whats-on-picture" src={event.book.photoUrl}></img>
             <div className="book-now"><p><Link to={`/book-event/${events.indexOf(event)}`} className="book-now-text">Book Now</Link></p></div></div>
-            <p><Link to={`/event/${events.indexOf(event)}`} class="event-titles">{event.title}</Link></p>
+            <p><Link to={`/event/${events.indexOf(event)}`} className="event-titles">{event.title}</Link></p>
             </div>
         )
     })
@@ -37,10 +50,13 @@ const Home = () => {
 
     return (
         <div>
-        <h1>What's On</h1>
-        <div className = "whats-on-container">
-            {eventsList}
-        </div>
+            <div className = "search-bar">
+                <input placeholder="Search" onChange={event => setQuery(event.target.value)}/>
+            </div>
+            <h1>What's On</h1>
+            <div className = "whats-on-container">
+                {eventsList}
+            </div>
         </div>
 
     )
