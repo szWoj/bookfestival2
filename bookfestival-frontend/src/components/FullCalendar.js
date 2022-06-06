@@ -2,11 +2,8 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react' 
 import dayGridPlugin from '@fullcalendar/daygrid'
 import {useState, useEffect} from 'react'
-import { NavItem } from 'reactstrap'
-import { calendarFormat } from 'moment'
-import { Calendar } from 'react-calendar'
 
-const BigCalendar = ({eventsList, customer, bookings, handleDelete}) => {
+const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
 
     const [date, setDate] = useState(new Date(2021, 7, 1)) 
 
@@ -15,15 +12,20 @@ const BigCalendar = ({eventsList, customer, bookings, handleDelete}) => {
         container["title"] = event.title;
         container["start"] = event.dateTime;
         container["end"] = event.dateTime;
+        // container["url"] = `/event/${(eventsList.find((event) => eventsList.title = event.title)).id}`;
         return container
        })
 
     console.log(events)
 
     const eventClick = (info) => {
+        
         const eventObj = info.event;
+        info.jsEvent.preventDefault()
         if (eventObj.start){
-            alert("Event: " + eventObj.title + " at " + eventObj.start)
+            // window.open(eventObj.url);
+            alert(eventObj.title + ", " + eventObj.start)
+            
         }
     }
 
@@ -64,5 +66,5 @@ const BigCalendar = ({eventsList, customer, bookings, handleDelete}) => {
 }
 
 
-export default BigCalendar;
+export default CustomerCalendar;
 
