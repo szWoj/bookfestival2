@@ -44,7 +44,7 @@ const BookEvent = () => {
     }
 
     const findOutTheCustomer = () =>{
-        axios.get('http://localhost:8080/customer', {
+        axios.get(`${process.env.REACT_APP_GETTING_EXISTING_CUSTOMER}`, {
             params: {
                 email: email.email,
                 phoneNumber: phoneNumber.phoneNumber,
@@ -58,7 +58,7 @@ const BookEvent = () => {
                 console.log(existingCustomer);
                 if(res.data == ""){
                     console.log("Customer not in db")
-                    axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+                    axios.post(`${process.env.REACT_APP_POSTING_A_NEW_CUSTOMER}`, {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
                     .then(res => {
                         // console.log(res);
                         console.log(res.data);
@@ -95,7 +95,7 @@ const BookEvent = () => {
             event: event,
             customer: newCustomer
         }
-        axios.post("http://localhost:8080/bookings", booking)
+        axios.post(`${process.env.REACT_APP_POSTING_A_BOOKING}`, booking)
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -107,7 +107,7 @@ const BookEvent = () => {
             event: event,
             customer: existingCustomer[0]
         }
-        axios.post("http://localhost:8080/bookings", booking)
+        axios.post(`${process.env.REACT_APP_POSTING_A_BOOKING}`, booking)
         .then(res => {
             console.log(res);
             console.log(res.data);

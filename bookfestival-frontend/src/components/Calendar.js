@@ -41,7 +41,7 @@ const getCustomer = () => {
 const handleDelete = (evt) => {
     bookings.forEach(((booking) => {
         if (booking.event.title === evt.title) {
-            const url = "http://localhost:8080/bookings/" + booking.id
+            const url = `${process.env.REACT_APP_LINK_TO_DELETE_BOOKING}` + booking.id
             axios.delete(url)
             .then(res => {  
                 console.log(res);  
