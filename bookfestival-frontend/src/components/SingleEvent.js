@@ -43,7 +43,7 @@ const SingleEvent = () => {
         VenueService.getVenues().then((response) => {
             setVenues(response.data);
         });
-        console.log(venues);
+        // console.log(venues);
     }
 
     const convertToText = (html) => {

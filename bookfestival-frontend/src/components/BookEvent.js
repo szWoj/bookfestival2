@@ -13,7 +13,7 @@ const BookEvent = () => {
     const[name, setName] = useState({name: ""})
     const[phoneNumber, setPhoneNumber] = useState({phoneNumber: ""})
     const[email, setEmail] = useState({email:""})
-    const[theCustomer, setTheCustomer] = useState([])
+    const[newCustomer, setNewCustomer] = useState([])
     const[existingCustomer, setExistingCustomer] = useState([])
 
 
@@ -45,23 +45,19 @@ const BookEvent = () => {
 
     const findOutTheCustomer = () =>{
         
-        
-        
-        
-            // setTheCustomer({})
             axios.get('http://localhost:8080/customer', {
                 params: {
                     email: email.email,
                     phoneNumber: phoneNumber.phoneNumber,
                     name: name.name
-
-
                 }
             })
+            
             .then(res => {
                     console.log(res);
                     console.log(res.data);
-                    setExistingCustomer(res.data)
+                    setExistingCustomer(res.data) // ?res.data[0] //I only want to fire this off when existingCustomer is populated with not empty data  
+                    console.log(existingCustomer);
                     if(res.data == ""){
             
                         console.log("Customer not in db")
@@ -69,69 +65,44 @@ const BookEvent = () => {
                         .then(res => {
                             // console.log(res);
                             console.log(res.data);
-                            setTheCustomer(res.data)
+                            setNewCustomer(res.data)
+                            console.log(newCustomer);
                             
                         })
-            
-                        
                     }
-            // .then(function (response){
-            //     console.log(response)
-            //     setTheCustomer(response);
+            })
             
-        
-        
-        
-        })
-            
-
-
-            // axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
-            // .then(res => {
-            //     console.log(res);
-            //     console.log(res.data);
-            //     // setTheCustomer(res.data)
-                
-            // })
-
-            
-        
-        
-        
-}
-// console.log(theCustomer)
-
+    }
+    console.log(existingCustomer);
+    console.log(newCustomer)
+    
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
         findOutTheCustomer()
-
-
-        // axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
-        // .then(res => {
-        //     console.log(res);
-        //     console.log(res.data);
-        //     setTheCustomer(res.data)
-            
-        // })
         
-    }
-    // console.log(theCustomer)
-    
+        }
+
     useEffect(() => {
-          
-        postBooking()
+        if(existingCustomer.length){ //execute it anytime it changes - or stays the same - , except when it changes to null
+            postBookingExistingCustomer() 
+        }
     }, [existingCustomer])
 
-    // useEffect(()=>{
-    //     postBookingExistingCustomer()
-    // },[existingCustomer])
 
-    const postBooking = () => {
+    
+    useEffect(() => {
+        postBookingNewCustomer()
+
+    }, [newCustomer])
+
+
+
+    const postBookingNewCustomer = () => {
 
         const booking = {
             event: event,
-            customer: theCustomer
+            customer: newCustomer
         }
 
         axios.post("http://localhost:8080/bookings", booking)
@@ -140,22 +111,24 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+        
     }
 
-    // const postBookingExistingCustomer = () => {
+    const postBookingExistingCustomer = () => {
 
-    //     const booking = {
-    //         event: event,
-    //         customer: theCustomer
-    //     }
+        const booking = {
+            event: event,
+            customer: existingCustomer[0]
+        }
 
-    //     axios.post("http://localhost:8080/bookings", booking)
-    //     .then(res => {
-    //         console.log(res);
-    //         console.log(res.data);
-    //     })
-    //     console.log(booking)
-    // }
+        axios.post("http://localhost:8080/bookings", booking)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        console.log(booking)
+        
+    }
 
 
     return ( 
