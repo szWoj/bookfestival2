@@ -51,6 +51,7 @@ const BookEvent = () => {
             setTheCustomer(res.data)
             
         })
+        clearFields();
         
     }
 
@@ -73,6 +74,12 @@ const BookEvent = () => {
         console.log(booking)
     }
 
+    const clearFields = () => {
+        document.getElementById("name").value="";
+        document.getElementById("phoneNumber").value="";
+        document.getElementById("email").value="";
+    }
+
 
     return ( 
         
@@ -81,21 +88,21 @@ const BookEvent = () => {
         <p>{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
-        <form onSubmit={handleSubmit}>
+        <form >
             <label>
             Name
             </label>
-            <input type="text" name="name" onChange={handleNameChange}></input>
+            <input type="text" name="name" id="name" onChange={handleNameChange}></input>
             <label>
             Phone number
             </label>
-            <input type="text" name="phoneNumber"onChange={handlePhoneNumberChange}></input>
+            <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePhoneNumberChange}></input>
             <label>
             Email Address
             </label>
-            <input type="text" name="email" onChange={handleEmailChange}></input>
-            <button value={handleSubmit}>Submit</button>
-            <Link to={`/calendar/${theCustomer.id}`}>Book Event</Link>
+            <input type="text" name="email" id="email" onChange={handleEmailChange}></input>
+            <button onClick={handleSubmit}>Book Event</button>
+            <Link to={`/calendar/${theCustomer.id}`}>View Calendar</Link>
         </form>
         </>
     )
