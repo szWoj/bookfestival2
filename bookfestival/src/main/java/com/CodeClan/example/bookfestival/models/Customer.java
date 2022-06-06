@@ -16,8 +16,9 @@ public class Customer {
     @Column(name="name")
     private String name;
 
-    @Column(name="phoneNumber")
-    private int phoneNumber;
+
+    @Column(name="phone_number")
+    private String phoneNumber;
 
     @Column(name="email")
     private String email;
@@ -26,7 +27,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
-    public Customer(String name, int phoneNumber, String email) {
+    public Customer(String name, String phoneNumber, String email) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -51,11 +52,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

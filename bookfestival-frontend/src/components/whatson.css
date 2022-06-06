@@ -1,0 +1,59 @@
+.search-bar{
+    text-align: right;
+}
+
+h1{text-align: center;
+}
+
+.whats-on-container{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 50px;
+    background-color: white;
+}
+
+.whats-on-subgrouping{
+    flex: 17%;
+}
+
+.image-container {
+  
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    vertical-align: middle;
+    margin-top: 40px;
+}
+
+.whats-on-picture{
+    width: 200px;
+    height: 250px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+     
+}
+
+.image-container:hover{
+    transform: scale(1.2)
+} 
+
+.book-now{
+    position: absolute;
+    text-decoration: none;
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.book-now-text{
+    visibility: none; opacity: 0;
+    
+}
+
+.image-container:hover .book-now-text{
+    visibility: visible; opacity: 1;
+    color: red;
+}
