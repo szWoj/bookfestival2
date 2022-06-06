@@ -33,6 +33,16 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
+    @GetMapping(value = "/customer")
+    public ResponseEntity findCustomerByEmail(@RequestParam(name = "email", required = false) String email,
+                                              @RequestParam(name = "phoneNumber", required = false) String phoneNumber,
+                                              @RequestParam(name = "name", required = false) String name){
+        if(email != null && phoneNumber != null && name != null){
+            return new ResponseEntity<>(customerRepository.findByEmailAndPhoneNumberAndName(email, phoneNumber, name), HttpStatus.OK);
+        }
+        return null;
+    }
+
 
 
 
