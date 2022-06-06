@@ -36,7 +36,8 @@ h1{text-align: center;
 }
 
 .image-container:hover{
-    transform: scale(1.2)
+    transform: scale(1.2);
+    transition: .5s ease;
 } 
 
 .book-now{
@@ -46,14 +47,67 @@ h1{text-align: center;
     display: flex;
     justify-content: center;
     vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
 .book-now-text{
     visibility: none; opacity: 0;
-    
+    text-decoration: none; 
+}
+
+.image-container:hover .book-now-text:hover{
+    background-color: rgb(255, 100, 100);
 }
 
 .image-container:hover .book-now-text{
     visibility: visible; opacity: 1;
+    color: white;
+    text-decoration: none;
+    background-color: red;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 0.75rem rgb(65, 65, 65));
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.image-container:hover .whats-on-picture{
+    opacity: 0.5;
+    filter: drop-shadow(0 0 0.75rem grey);
+}
+
+.event-title-container{
+    width: 230px;
+    display: flex;
+    justify-content: center;
+    padding-left:30px;
+
+}
+
+.event-title{
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.event-title > * {
+    text-decoration: none;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.event-title > *:hover{
+    text-decoration: none;
+    color:red;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+.whats-on{
+    font-family: 'Ubuntu', sans-serif;
     color: red;
 }

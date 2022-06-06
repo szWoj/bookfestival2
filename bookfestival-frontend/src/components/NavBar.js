@@ -21,9 +21,9 @@ const NavBar = () => {
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
-                <NavbarBrand href="/calendar">Events Calendar</NavbarBrand>
-                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <NavbarBrand href="/venues">Venue</NavbarBrand>
+                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+                <NavbarBrand href="/calendar">Events Calendar</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
