@@ -11,9 +11,6 @@ const Home = () => {
     const [query, setQuery] = useState("")
 
     const {id} = useParams();
-    // const query = "black"
-    // const filteredEvents = filterEvents(events, query)
-
 
     useEffect(() => {
         getEvents()
