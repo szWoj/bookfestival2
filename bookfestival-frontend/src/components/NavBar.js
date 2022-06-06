@@ -21,7 +21,7 @@ const NavBar = () => {
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
-                <NavbarBrand href="/venues">Venues</NavbarBrand>
+                <NavbarBrand href="/venues">Venue</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}

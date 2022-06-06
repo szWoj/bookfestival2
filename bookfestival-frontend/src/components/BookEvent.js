@@ -14,7 +14,9 @@ const BookEvent = () => {
     const[name, setName] = useState({name: ""})
     const[phoneNumber, setPhoneNumber] = useState({phoneNumber: ""})
     const[email, setEmail] = useState({email:""})
-    const[theCustomer, setTheCustomer] = useState([])
+    const[newCustomer, setNewCustomer] = useState([])
+    const[existingCustomer, setExistingCustomer] = useState([])
+
 
 
     useEffect(() => {
@@ -41,31 +43,70 @@ const BookEvent = () => {
         setPhoneNumber({phoneNumber: evt.target.value})
     }
 
+    const findOutTheCustomer = () =>{
+        axios.get('http://localhost:8080/customer', {
+            params: {
+                email: email.email,
+                phoneNumber: phoneNumber.phoneNumber,
+                name: name.name
+            }
+        })
+        .then(res => {
+                console.log(res);
+                console.log(res.data);
+                setExistingCustomer(res.data) // ?res.data[0] //I only want to fire this off when existingCustomer is populated with not empty data
+                console.log(existingCustomer);
+                if(res.data == ""){
+                    console.log("Customer not in db")
+                    axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+                    .then(res => {
+                        // console.log(res);
+                        console.log(res.data);
+                        setNewCustomer(res.data)
+                        console.log(newCustomer);
+                    })
+                }
+        })
+}
+
     const handleSubmit = (evt) => {
+
         evt.preventDefault();
 
-        axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-            setTheCustomer(res.data)
-            
-        })
+        findOutTheCustomer();
+
         clearFields();
         
     }
 
     useEffect(() => {
-            postBooking()
-    }, [theCustomer])
+        if(existingCustomer){ 
+            postBookingExistingCustomer()
+        }
+    }, [existingCustomer])
 
-    const postBooking = () => {
+    useEffect(() => {
+        postBookingNewCustomer()
+    }, [newCustomer])
 
+
+    const postBookingNewCustomer = () => {
         const booking = {
             event: event,
-            customer: theCustomer
+            customer: newCustomer
         }
-
+        axios.post("http://localhost:8080/bookings", booking)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        console.log(booking)
+    }
+    const postBookingExistingCustomer = () => {
+        const booking = {
+            event: event,
+            customer: existingCustomer[0]
+        }
         axios.post("http://localhost:8080/bookings", booking)
         .then(res => {
             console.log(res);
@@ -102,7 +143,8 @@ const BookEvent = () => {
             </label>
             <input type="text" name="email" id="email" onChange={handleEmailChange}></input>
             <button onClick={handleSubmit}>Book Event</button>
-            <Link to={`/calendar/${theCustomer.id}`}>View Calendar</Link>
+            { existingCustomer == "" ?
+            <Link to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
         </form>
         </>
     )
