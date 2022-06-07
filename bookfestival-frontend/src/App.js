@@ -9,6 +9,7 @@ import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import EventCalendar from './components/Calendar';
 import MainCalendar from './components/MainCalendar';
+import Management from './components/Management';
 
 
 
@@ -31,6 +32,7 @@ function App(){
              <Route exact path="/calendar/:id" element={<EventCalendar/>}/>
              <Route exact path="/book-event/:id" element={<BookEvent/>}/>
              <Route exact path="/calendar" element={<MainCalendar/>}/>
+             <Route exact path="/management" element={<Management/>}/>
 
            </Routes>
         </div> 

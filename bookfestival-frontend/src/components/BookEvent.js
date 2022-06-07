@@ -79,7 +79,7 @@ const BookEvent = () => {
 
         sendEmailConfirm(evt)
 
-        clearFields();
+        
 
 
         
@@ -108,7 +108,7 @@ const BookEvent = () => {
         })
         console.log(booking)
 
-
+        clearFields();
     }
     const postBookingExistingCustomer = () => {
         const booking = {
@@ -121,6 +121,8 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+
+        clearFields();
     }
 
     const clearFields = () => {
