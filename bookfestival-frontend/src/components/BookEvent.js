@@ -109,8 +109,6 @@ const BookEvent = () => {
         console.log(booking)
 
         clearFields();
-
-
     }
     const postBookingExistingCustomer = () => {
         const booking = {

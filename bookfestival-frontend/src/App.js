@@ -12,6 +12,9 @@ import MainCalendar from './components/MainCalendar';
 import FilteredEvents from './components/FilteredEvents';
 import FilteredEvents3 from './components/FilteredEvents3';
 import FilteredEvents2 from './components/FilteredEvents2';
+import Management from './components/Management';
+
+
 
 
 
@@ -36,6 +39,8 @@ function App(){
              <Route exact path="/free" element={<FilteredEvents/>}/>
              <Route exact path="/midRange" element={<FilteredEvents2/>}/>
              <Route exact path="/expensive" element={<FilteredEvents3/>}/>
+             <Route exact path="/management" element={<Management/>}/>
+
 
            </Routes>
         </div> 
