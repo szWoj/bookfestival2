@@ -48,8 +48,9 @@ const Home = () => {
 
     return (
         <div>
+        <img src={require("./images/Banner-BookFestival.png")} className="banner"></img>
             <div className = "search-bar">
-                <input placeholder="Search" onChange={event => setQuery(event.target.value)}/>
+                <input placeholder="Search" onChange={event => setQuery(event.target.value)} />
             </div>
             <h1 className="whats-on">What's On</h1>
             <div className = "whats-on-container">

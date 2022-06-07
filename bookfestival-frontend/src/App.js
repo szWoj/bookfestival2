@@ -18,20 +18,16 @@ function App(){
 
     return (   
       <>
-      <header>
-        <NavBar/>
-      </header> 
-       <Router>
-        <div>
+      <NavBar/>
+       <Router >
+        <div className="whats-on-page">
             <Routes>
-
              <Route exact path="/" element={<Home/>}/>
              <Route exact path="/venues" element={<VenueComponent/>}/>
              <Route exact path="/event/:id" element={<SingleEvent/>}/>
              <Route exact path="/calendar/:id" element={<EventCalendar/>}/>
              <Route exact path="/book-event/:id" element={<BookEvent/>}/>
              <Route exact path="/calendar" element={<MainCalendar/>}/>
-
            </Routes>
         </div> 
       </Router></>  
