@@ -33,7 +33,7 @@ function VenueComponent() {
     };
     
     const loader = new Loader({
-        apiKey: "AIzaSyCQInXva025Q49z-kxApKSzhtu_zTjqhvo"
+        apiKey: `${process.env.REACT_APP_MAP_KEY}`
       });
       
     loader

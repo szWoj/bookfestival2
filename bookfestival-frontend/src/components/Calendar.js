@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import {useState, useEffect} from "react";
 import React from "react";
 import CustomerService from "../services/CustomerService";
-import BigCalendar from "./FullCalendar";
+import CustomerCalendar from "./FullCalendar";
 import axios from "axios";
 
 
@@ -33,7 +33,6 @@ const getCustomer = () => {
         setCustomer(response.data[findId(response.data)])
         setBookings(response.data[findId(response.data)].bookings)
         setEvents(response.data[findId(response.data)].bookings.map(booking => booking.event))
-       
     });
 
 }
@@ -41,7 +40,7 @@ const getCustomer = () => {
 const handleDelete = (evt) => {
     bookings.forEach(((booking) => {
         if (booking.event.title === evt.title) {
-            const url = "http://localhost:8080/bookings/" + booking.id
+            const url = `${process.env.REACT_APP_LINK_TO_DELETE_BOOKING}` + booking.id
             axios.delete(url)
             .then(res => {  
                 console.log(res);  
@@ -57,7 +56,7 @@ console.log(bookings[0])
 
     return (
     <div>
-      <BigCalendar customer={customer} bookings={bookings} eventsList={events} 
+      <CustomerCalendar customer={customer} bookings={bookings} eventsList={events} 
       handleDelete={handleDelete}
       />
     </div>)

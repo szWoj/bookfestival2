@@ -1,9 +1,10 @@
 import { useParams } from 'react-router';
-import { useState, useEffect, Component} from "react";
+import { useState, useEffect, Component, useRef} from "react";
 import EventService from "../services/EventService";
 import axios from "axios";
 import CustomerService from "../services/CustomerService";
 import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 
 const BookEvent = () => {
@@ -16,6 +17,7 @@ const BookEvent = () => {
     const[email, setEmail] = useState({email:""})
     const[newCustomer, setNewCustomer] = useState([])
     const[existingCustomer, setExistingCustomer] = useState([])
+    const form = useRef();
 
 
 
@@ -44,7 +46,7 @@ const BookEvent = () => {
     }
 
     const findOutTheCustomer = () =>{
-        axios.get('http://localhost:8080/customer', {
+        axios.get(`${process.env.REACT_APP_GETTING_EXISTING_CUSTOMER}`, {
             params: {
                 email: email.email,
                 phoneNumber: phoneNumber.phoneNumber,
@@ -58,7 +60,7 @@ const BookEvent = () => {
                 console.log(existingCustomer);
                 if(res.data == ""){
                     console.log("Customer not in db")
-                    axios.post("http://localhost:8080/customers", {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+                    axios.post(`${process.env.REACT_APP_POSTING_A_NEW_CUSTOMER}`, {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
                     .then(res => {
                         // console.log(res);
                         console.log(res.data);
@@ -75,7 +77,11 @@ const BookEvent = () => {
 
         findOutTheCustomer();
 
+        sendEmailConfirm(evt)
+
         clearFields();
+
+
         
     }
 
@@ -95,19 +101,21 @@ const BookEvent = () => {
             event: event,
             customer: newCustomer
         }
-        axios.post("http://localhost:8080/bookings", booking)
+        axios.post(`${process.env.REACT_APP_POSTING_A_BOOKING}`, booking)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
         console.log(booking)
+
+
     }
     const postBookingExistingCustomer = () => {
         const booking = {
             event: event,
             customer: existingCustomer[0]
         }
-        axios.post("http://localhost:8080/bookings", booking)
+        axios.post(`${process.env.REACT_APP_POSTING_A_BOOKING}`, booking)
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -121,6 +129,21 @@ const BookEvent = () => {
         document.getElementById("email").value="";
     }
 
+    
+    
+    
+    const sendEmailConfirm = (evt) => {
+        evt.preventDefault(); // Prevents default refresh by the browser
+        emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_PUBLIC_KEY}`)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+
+        evt.target.reset()
+    }
+
 
     return ( 
         
@@ -129,7 +152,7 @@ const BookEvent = () => {
         <p>{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
-        <form >
+        <form ref={form} onSubmit={sendEmailConfirm}>
             <label>
             Name
             </label>
@@ -148,6 +171,6 @@ const BookEvent = () => {
         </form>
         </>
     )
-}
+    }
 
 export default BookEvent;

@@ -8,9 +8,12 @@ import com.CodeClan.example.bookfestival.utilities.UtilitiesInt;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -41,12 +44,14 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     BookingRepository bookingRepository;
 
+    @Value("${app.apiKey}")
+    private String apiKey;
 
-    URL url = new URL("https://api.edinburghfestivalcity.com/events?festival=book&year=2021&key=UJQ7TKisbTVqCDz&signature=aba911fff8bf4bd53bfbbc885808a7ccc69ce84d");
 
     public DataLoader() throws MalformedURLException {}
 
     public void run(ApplicationArguments args) throws IOException {
+        URL url = new URL("https://api.edinburghfestivalcity.com/events?festival=book&year=2021&key="+apiKey);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
