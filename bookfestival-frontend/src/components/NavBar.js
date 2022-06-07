@@ -1,6 +1,6 @@
 import './NavBar.css';
+
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import {
     Navbar,
@@ -11,19 +11,20 @@ import {
     Nav,
     NavbarBrand
 } from 'reactstrap';
+// import { whenTransitionDone } from 'fullcalendar';
 const NavBar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
         <div style={{
-            display: 'inline', width: 550, padding: 10
+            display: 'inline', width: '100%', position: 'fixed'
         }}>
-            <h5>Book Festival</h5>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Events</NavbarBrand>
+            <Navbar style={{backgroundColor:'#D6D5C9'}} light expand="md">
+            <img src={require("./images/BOOKME.png")} className="logo"></img>
+                <NavbarBrand href="/" style={{color: 'red', fontSize: '2.2em', borderRadius: '5px', fontFamily: 'Hind Madurai, sans-serif'}}>Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
-                <NavbarBrand href="/venues">Venue</NavbarBrand>
+                <NavbarBrand href="/venues" style={{color: 'red', fontSize: '2.2em', borderRadius: '5px', fontFamily: 'Hind Madurai, sans-serif'}}>Venue</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
-                <NavbarBrand href="/calendar">Events Calendar</NavbarBrand>
+                <NavbarBrand href="/calendar" style={{color: 'red', fontSize: '2.2em', borderRadius: '5px', fontFamily: 'Hind Madurai, sans-serif'}}>Events Calendar</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
