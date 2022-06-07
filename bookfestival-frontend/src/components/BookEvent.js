@@ -77,7 +77,7 @@ const BookEvent = () => {
 
         findOutTheCustomer();
 
-        sendEmailConfirm(evt)
+        sendEmailConfirm(evt);
 
         
 
