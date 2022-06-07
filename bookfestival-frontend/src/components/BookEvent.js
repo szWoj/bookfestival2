@@ -1,9 +1,10 @@
 import { useParams } from 'react-router';
-import { useState, useEffect, Component} from "react";
+import { useState, useEffect, Component, useRef} from "react";
 import EventService from "../services/EventService";
 import axios from "axios";
 import CustomerService from "../services/CustomerService";
 import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 
 const BookEvent = () => {
@@ -16,6 +17,7 @@ const BookEvent = () => {
     const[email, setEmail] = useState({email:""})
     const[newCustomer, setNewCustomer] = useState([])
     const[existingCustomer, setExistingCustomer] = useState([])
+    const form = useRef();
 
 
 
@@ -75,7 +77,11 @@ const BookEvent = () => {
 
         findOutTheCustomer();
 
+        sendEmailConfirm(evt)
+
         clearFields();
+
+
         
     }
 
@@ -101,6 +107,8 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+
+
     }
     const postBookingExistingCustomer = () => {
         const booking = {
@@ -121,6 +129,21 @@ const BookEvent = () => {
         document.getElementById("email").value="";
     }
 
+    
+    
+    
+    const sendEmailConfirm = (evt) => {
+        evt.preventDefault(); // Prevents default refresh by the browser
+        emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_PUBLIC_KEY}`)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+
+        evt.target.reset()
+    }
+
 
     return ( 
         
@@ -129,7 +152,7 @@ const BookEvent = () => {
         <p>{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
-        <form >
+        <form ref={form} onSubmit={sendEmailConfirm}>
             <label>
             Name
             </label>
@@ -148,6 +171,6 @@ const BookEvent = () => {
         </form>
         </>
     )
-}
+    }
 
 export default BookEvent;
