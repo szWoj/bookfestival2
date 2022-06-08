@@ -73,7 +73,8 @@ h1{text-align: center;
     padding-right: 10px;
     border-radius: 10px;
     filter: drop-shadow(0 0 0.75rem rgb(65, 65, 65));
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Hind Madurai', sans-serif;
+    font-weight:bolder;
 }
 
 .image-container:hover .whats-on-picture{
@@ -108,14 +109,20 @@ h1{text-align: center;
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Water+Brush&display=swap');
 
 .whats-on{
+    padding-top: 30px;
+    padding-bottom: 10px;
     color:red;
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 3em;
+
 }
 
 
 .banner {
-    margin-top: 80px;
+    padding-top: 80px;
     max-width: 100%;
     max-height: 100%;
 
@@ -125,4 +132,100 @@ h1{text-align: center;
     height: 80px;
     width: auto;
     padding-bottom: 1px;
+}
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+
+}
+
+.search-bar > * {
+    border-color: red;
+    border-radius: 5px;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+.calendar-container {
+    /* margin-top: 22px; */
+}
+.fc .fc-button-primary {
+    background-color: red;
+}
+.fc-today-button.fc-button.fc-button-primary{
+    background: red;
+    border: red;
+}
+.fc-today-button.fc-button.fc-button-primary:hover{
+    background: #3788d8;
+    border: #3788d8;
+}
+
+.fc-next-button.fc-button.fc-button-primary{
+    background: #3788d8;
+    border: #3788d8;
+}
+
+.fc-prev-button.fc-button.fc-button-primary{
+    background: #3788d8;
+    border: #3788d8;
+}
+.fc-prev-button.fc-button.fc-button-primary:hover{
+    background: red;
+    border: red;
+}
+
+.fc-next-button.fc-button.fc-button-primary:hover{
+    background: red;
+    border: red;
+}
+
+.fc-daygrid-event-dot {
+    border:red;
+}
+
+ .fc .fc-button-primary > *{
+    color: red;
+}
+
+.fc-event-title {
+    color: #3788d8;
+    font-family: sans-serif;
+}
+
+.fc-event-time {
+    color: #3788d8;
+    font-family: sans-serif;
+}
+
+.fc-daygrid-day-frame.fc-scrollgrid-sync-inner{
+    background: linear-gradient(to right, #f6f6f6, #e8eae4);
+    padding-bottom: 3.5em;
+}
+
+.fc-icon.fc-icon-chevron-left{
+    color: white;
+}
+
+.fc-icon.fc-icon-chevron-right{
+    color: white;
+}
+
+.fc-toolbar-title{
+    color: red;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+.fc-scrollgrid-sync-inner{
+    color: red;
+    background-color: #ffffff;
+    font-weight: lighter;
+    
+}
+.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard{
+    padding-top: 120px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+   
 }

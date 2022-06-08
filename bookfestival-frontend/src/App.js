@@ -18,7 +18,7 @@ function App(){
 
     return (   
       <>
-      <NavBar/>
+      
        <Router >
         <div className="whats-on-page">
             <Routes>
