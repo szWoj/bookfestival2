@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router';
+import NavBar from "./NavBar";
 
 const FilteredEvents = () => {
 
@@ -43,11 +44,15 @@ const FilteredEvents = () => {
 
     return (
         <div>
+        <div>
+       <NavBar/></div>
+        <div className="filtered-events-page">
             
             <h1 className="whats-on">Free Events</h1>
             <div className = "whats-on-container">
                 {eventsList}
             </div>
+        </div>
         </div>
 
     )
