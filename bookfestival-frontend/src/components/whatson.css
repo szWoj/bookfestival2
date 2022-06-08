@@ -233,6 +233,7 @@ h1{text-align: center;
 
 .book-event-title{
     color: red;
+    text-align: center;
 }
 
 
@@ -243,14 +244,55 @@ h1{text-align: center;
 
 }
 
-.lable {
-    color: red;
+.book2 {
+    justify-content: center;
+    background-color: aqua;
+    padding-top: 25px;
+    padding-bottom: 35px;
+    border-radius: 20px;
+    background: linear-gradient(to right, #ede8e8, rgb(214, 213, 201));
+    color: rgb(57, 57, 57);
+    font-family: 'Hind Madurai', sans-serif;
+
 }
 
+
+
 .book-container {
+    justify-content: center;
     width: 700px;
-    justify-content: center;
     flex-wrap: wrap;
-    justify-content: center;
     text-align: center;
+    
 }
+
+.book-button {
+    background-color: red;
+    color:white;
+    padding: 4px 18px;
+    border-radius: 5px;
+    border-color: red;
+}
+
+.book-button:hover{
+    background-color: rgb(255, 100, 100);
+    border-color: rgb(255, 100, 100);
+}
+
+.view-calendar{
+    background-color: #3788d8;
+    color:white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border-color: #3788d8;
+}
+
+.view-calendar:hover{
+    background-color: #63a3e3;
+    color:white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border-color: #63a3e3;
+    text-decoration: none;
+}
+
