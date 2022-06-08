@@ -155,7 +155,7 @@ const BookEvent = () => {
         <div className="book2">
         <h1 className="book-event-title">Book Event</h1>
         <div className="book-container">
-        <p>{event.title}</p>
+        <p className="booking-event-title">{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
         <form ref={form} onSubmit={sendEmailConfirm} >
@@ -182,7 +182,7 @@ const BookEvent = () => {
             <br></br>
             <br></br>
             { existingCustomer == "" ?
-            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`} className='view-calendar'>View Calendar</Link>}
+            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Your Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`} className='view-calendar'>View Calendar</Link>}
         </form></div></div></div>
         </>
     )

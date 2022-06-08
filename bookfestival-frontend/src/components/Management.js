@@ -5,6 +5,7 @@ import BookingService from '../services/BookingService'
 import CustomerService from '../services/CustomerService'
 import EventService from '../services/EventService'
 import { Chart } from "react-google-charts";
+import NavBar from './NavBar'
 // import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 const Management = () => {
     const[authors, setAuthors] = new useState([])
@@ -78,7 +79,7 @@ const Management = () => {
       const options1 = {
         title: "Numbers of the festival",
         chartArea: { width: "50%" },
-        colors: ["#B0120A"],
+        colors: ["#3788d8"],
         hAxis: {
           title: "Numbers of the festival",
           minValue: 0,
@@ -89,12 +90,15 @@ const Management = () => {
       };
     return (
     <>
-        <h1>Management Info</h1>
+        <div>
+       <NavBar/></div>
+       <div className="management-page">
+        <h1 className='bookings-title'>Management Info</h1>
         {/* <p>Number of Authors = {authors.length}</p>
         <p>Number of Books = {books.length}</p>
         <p>Number of Events = {events.length}</p>
         <p>Number of Bookings = {bookings.length}</p> */}
-        <p>Revenue = £{revenue}</p>
+        <p className="revenue">Revenue = £{revenue}</p>
         {/* <p>Number of Events Booked = {eventsBooked}</p>
         <p>Number of Customers = {customers.length}</p> */}
         <Chart
@@ -103,8 +107,9 @@ const Management = () => {
       height="400px"
       data={data1}
       options={options1}
+      
     />
-    </>
+    </div></>
     )
 }
 export default Management;
