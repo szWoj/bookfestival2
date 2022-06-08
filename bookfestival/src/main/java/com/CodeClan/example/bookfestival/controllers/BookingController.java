@@ -4,6 +4,7 @@ import com.CodeClan.example.bookfestival.models.Booking;
 import com.CodeClan.example.bookfestival.models.Customer;
 import com.CodeClan.example.bookfestival.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class BookingController {
         if(id != null){
             return new ResponseEntity<>(bookingRepository.findByCustomerId(id), HttpStatus.OK);
         }
-        return new ResponseEntity<>(bookingRepository.findAll(),HttpStatus.OK);
+        return new ResponseEntity<>(bookingRepository.findAll(Sort.by(Sort.Direction.ASC, "eventId")),HttpStatus.OK);
     }
 
 

@@ -75,7 +75,9 @@ const BookEvent = () => {
 
         evt.preventDefault();
         findOutTheCustomer();
-        sendEmailConfirm(evt)
+
+        sendEmailConfirm(evt);
+
     }
 
     useEffect(() => {
@@ -102,7 +104,7 @@ const BookEvent = () => {
         console.log(booking)
         clearFields();
 
-
+        clearFields();
     }
     const postBookingExistingCustomer = () => {
         const booking = {
@@ -115,6 +117,7 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+
         clearFields();
     }
 
