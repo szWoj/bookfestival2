@@ -17,8 +17,6 @@ h1{text-align: center;
 }
 
 .image-container {
-  
-    /* background-color: ; */
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
@@ -86,7 +84,7 @@ h1{text-align: center;
     width: 230px;
     display: flex;
     justify-content: center;
-    padding-left:30px;
+    padding-left:50px;
 
 }
 
@@ -146,9 +144,6 @@ h1{text-align: center;
     font-family: 'Hind Madurai', sans-serif;
 }
 
-.calendar-container {
-    /* margin-top: 22px; */
-}
 .fc .fc-button-primary {
     background-color: red;
 }
@@ -228,4 +223,34 @@ h1{text-align: center;
     padding-right: 50px;
     padding-bottom: 50px;
    
+}
+
+.dropdown-toggle.btn.btn-success{
+    background-color: red;
+    border-color: red;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+.book-event-title{
+    color: red;
+}
+
+
+.book {
+    padding-top: 130px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.lable {
+    color: red;
+}
+
+.book-container {
+    width: 700px;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
 }

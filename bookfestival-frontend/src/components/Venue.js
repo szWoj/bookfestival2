@@ -66,8 +66,8 @@ function VenueComponent() {
             <table className = "table table-striped">
                 <thead>
                     <tr>
-                        <th> Venue name</th>
-                        <th> Venue address</th>
+                        <th className="table-title"> Venue name</th>
+                        <th className="table-title"> Venue address</th>
                     </tr>
 
                 </thead>
@@ -82,11 +82,9 @@ function VenueComponent() {
 
                         )
                     }
-
                 </tbody>
-
-
             </table>
+            <br></br>
 
             
 
