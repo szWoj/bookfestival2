@@ -157,7 +157,7 @@ public class DataLoader implements ApplicationRunner {
             bookList.add(book10);
             bookRepository.save(book10);
 
-            Book book11 = new Book("Black History Walking Tours",  authorList.get(10), Utilities.checkIfNull(jsonArr.getJSONObject(10), "genre"), "https://i2-prod.edinburghlive.co.uk/incoming/article21737328.ece/ALTERNATES/s810/0_IMG-9481JPG.jpg");
+            Book book11 = new Book("Black History Walking Tours",  authorList.get(10), Utilities.checkIfNull(jsonArr.getJSONObject(10), "genre"), "https://everythingedinburgh.com/wp-content/uploads/2020/09/Black-History-Walking-Tour-Edinburgh-St-Andrew-Square.jpg");
             bookList.add(book11);
             bookRepository.save(book11);
 

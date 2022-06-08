@@ -74,15 +74,10 @@ const BookEvent = () => {
     const handleSubmit = (evt) => {
 
         evt.preventDefault();
-
         findOutTheCustomer();
 
         sendEmailConfirm(evt);
 
-        
-
-
-        
     }
 
     useEffect(() => {
@@ -107,6 +102,7 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+        clearFields();
 
         clearFields();
     }

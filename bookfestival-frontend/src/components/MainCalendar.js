@@ -3,6 +3,9 @@ import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import FullCalendar from '@fullcalendar/react' 
 import dayGridPlugin from '@fullcalendar/daygrid'
+import NavBar from "./NavBar";
+
+
 
 
 const MainCalendar = () => {
@@ -43,16 +46,20 @@ const MainCalendar = () => {
     }
 
     return (
+        <>
         <div>
-        <FullCalendar
+       <NavBar/></div>
+        <div className="calendar-container"> 
+        <FullCalendar 
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
         initialDate={date}
         events={calendarEvents} 
         eventClick={eventClick}
+        
       />
       
-      </div>
+      </div></>
     )
 
 
