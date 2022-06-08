@@ -182,7 +182,7 @@ const BookEvent = () => {
             <br></br>
             <br></br>
             { existingCustomer == "" ?
-            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
+            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`} className='view-calendar'>View Calendar</Link>}
         </form></div></div></div>
         </>
     )

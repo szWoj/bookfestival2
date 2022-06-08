@@ -118,6 +118,18 @@ h1{text-align: center;
 
 }
 
+.bookings-title{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color:red;
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 2em;
+    text-align: center;
+}
+
+.bookings-class{
+    display:flex;
+}
 
 .banner {
     padding-top: 80px;
@@ -298,4 +310,32 @@ h1{text-align: center;
 
 .filtered-events-page{
     padding-top: 120px;
+}
+
+
+.list-container{
+    padding-top: 130px;
+    margin-bottom: -90px;
+    
+}
+
+.bookings-class{
+    justify-content: center;
+    text-align: right;
+}
+
+
+.delete {
+    background-color: red;
+    height: 30px;
+    border-color: red;
+    border-radius: 5px;
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.delete:hover{
+    background-color: rgb(255, 100, 100);
+    border-color: rgb(255, 100, 100);
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react' 
 import dayGridPlugin from '@fullcalendar/daygrid'
 import {useState, useEffect} from 'react'
+import NavBar from './NavBar'
 
 const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
 
@@ -39,9 +40,9 @@ const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
             container["title"] = event.title;
             container["date"] = (event.dateTime);
             return (
-            <div>
+            <div className="bookings-class">
             <p>{container.title}</p>
-            <button onClick={() => deleteEvent(event)}>Delete event</button>
+            <button onClick={() => deleteEvent(event)} className="delete">Delete event</button>
             </div>
             )
         })
@@ -51,8 +52,14 @@ const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
     return (
         <div>
         <div>
+       <NavBar/></div>
+       <div class="list-container">
+       <h2 className='bookings-title'>Your Bookings</h2>
         {bookingsList(eventsList)}
         </div>
+
+        <div className="customer-calendar-container">
+        
         <FullCalendar
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
@@ -61,7 +68,8 @@ const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
         eventClick={eventClick}
       />
       
-      </div>
+      
+      </div></div>
     )
 }
 
