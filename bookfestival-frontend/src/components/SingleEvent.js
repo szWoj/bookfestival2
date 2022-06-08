@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { useState, useEffect} from "react";
 import EventService from "../services/EventService";
 import "./singleevent.css"
+import NavBar from "./NavBar";
 
 
 const SingleEvent = () => {
@@ -54,15 +55,21 @@ const SingleEvent = () => {
 
     
     return (
+        <>
+        <div><NavBar/></div>
+        
     <div className="single-event-page">
+        <div className="flex-child book-image-container">
         <img className="single-event-picture" src={book.photoUrl}/>
-        <p></p>
+        </div>
+        <div className="flex-child info-container">
         <p className="single-event-description">{convertToText(event.description)}</p>
         <p className="single-event-text">Venue : {venue.name}</p>
         <p className="single-event-text">Date & Time: {event.dateTime}</p>
         <p className="single-event-text">Price: £{event.price}</p>
-        <p className="single-event-text"><Link to={`/book-event/${eventId}`}>Book Event</Link></p>
-    </div>
+        <p className="single-event-text"><Link to={`/book-event/${eventId}`} className="link">Book Event</Link></p>
+        </div>
+    </div></>
 )
     
 }

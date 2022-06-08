@@ -5,6 +5,7 @@ import axios from "axios";
 import CustomerService from "../services/CustomerService";
 import { Link } from "react-router-dom";
 import emailjs from '@emailjs/browser';
+import NavBar from './NavBar';
 
 
 const BookEvent = () => {
@@ -149,27 +150,32 @@ const BookEvent = () => {
     return ( 
         
         <>
-        <h1>Book Event</h1>
+        <div><NavBar/></div>
+        <div className="book">
+        <div className="book-container">
+        <h1 className="book-event-title">Book Event</h1>
         <p>{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
-        <form ref={form} onSubmit={sendEmailConfirm}>
-            <label>
+        <form ref={form} onSubmit={sendEmailConfirm} >
+            <label className="lable">
             Name
             </label>
             <input type="text" name="name" id="name" onChange={handleNameChange}></input>
             <label>
+            <br></br>
             Phone number
             </label>
             <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePhoneNumberChange}></input>
             <label>
+            <br></br>
             Email Address
             </label>
             <input type="text" name="email" id="email" onChange={handleEmailChange}></input>
             <button onClick={handleSubmit}>Book Event</button>
             { existingCustomer == "" ?
             <Link to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
-        </form>
+        </form></div></div>
         </>
     )
     }

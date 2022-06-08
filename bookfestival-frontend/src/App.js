@@ -21,7 +21,6 @@ function App(){
       <>
       
        <Router >
-        <div className="whats-on-page">
             <Routes>
              <Route exact path="/" element={<Home/>}/>
              <Route exact path="/venues" element={<VenueComponent/>}/>
@@ -32,7 +31,6 @@ function App(){
              <Route exact path="/management" element={<Management/>}/>
 
            </Routes>
-        </div> 
       </Router></>  
     );
 }
