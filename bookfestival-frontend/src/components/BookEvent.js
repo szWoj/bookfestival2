@@ -152,8 +152,9 @@ const BookEvent = () => {
         <>
         <div><NavBar/></div>
         <div className="book">
-        <div className="book-container">
+        <div className="book2">
         <h1 className="book-event-title">Book Event</h1>
+        <div className="book-container">
         <p>{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
@@ -161,21 +162,28 @@ const BookEvent = () => {
             <label className="lable">
             Name
             </label>
-            <input type="text" name="name" id="name" onChange={handleNameChange}></input>
-            <label>
             <br></br>
+            <input type="text" name="name" id="name" onChange={handleNameChange}></input>
+            <br></br>
+            <label>
             Phone number
             </label>
-            <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePhoneNumberChange}></input>
-            <label>
             <br></br>
+            <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePhoneNumberChange}></input>
+            <br></br>
+            <label>
             Email Address
             </label>
+            <br></br>
             <input type="text" name="email" id="email" onChange={handleEmailChange}></input>
-            <button onClick={handleSubmit}>Book Event</button>
+            <br></br>
+            <br></br>
+            <button onClick={handleSubmit} class="book-button">Book Event</button>
+            <br></br>
+            <br></br>
             { existingCustomer == "" ?
-            <Link to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
-        </form></div></div>
+            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
+        </form></div></div></div>
         </>
     )
     }
