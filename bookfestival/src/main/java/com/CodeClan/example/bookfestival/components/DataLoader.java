@@ -231,7 +231,7 @@ public class DataLoader implements ApplicationRunner {
             eventList = new ArrayList<>();
             for (int i = 0; i < jsonArr.length(); i++){
                 JSONObject jsonObj = jsonArr.getJSONObject(i);
-                Event event = new Event(Utilities.checkIfNull(jsonObj, "title"), Utilities.checkIfNull(jsonObj, "description"),UtilitiesInt.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "price"), Utilities.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "start"), bookList.get(i), venueList.get(0));
+                Event event = new Event(Utilities.checkIfNull(jsonObj, "title"), Utilities.checkIfNull(jsonObj, "description"), UtilitiesInt.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0),"price"), Utilities.checkIfNull(jsonObj.getJSONArray("performances").getJSONObject(0), "start"), bookList.get(i), venueList.get(0));
                 eventList.add(event);
             }
 
