@@ -62,7 +62,7 @@ const BookEvent = () => {
                     console.log("Customer not in db")
                     axios.post(`${process.env.REACT_APP_POSTING_A_NEW_CUSTOMER}`, {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
                     .then(res => {
-                        // console.log(res);
+                        
                         console.log(res.data);
                         setNewCustomer(res.data)
                         console.log(newCustomer);
@@ -79,11 +79,7 @@ const BookEvent = () => {
 
         sendEmailConfirm(evt);
 
-        
-
-
-        
-    }
+        }
 
     useEffect(() => {
         if(existingCustomer){ 

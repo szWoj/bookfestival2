@@ -53,15 +53,14 @@ const CustomerCalendar = ({eventsList, customer, bookings, handleDelete}) => {
         <div>
         {bookingsList(eventsList)}
         </div>
-        <FullCalendar
-        plugins={[ dayGridPlugin ]}
-        initialView="dayGridMonth"
-        initialDate={date}
-        events={events} 
-        eventClick={eventClick}
-      />
-      
-      </div>
+            <FullCalendar
+                plugins={[ dayGridPlugin ]}
+                initialView="dayGridMonth"
+                initialDate={date}
+                events={events} 
+                eventClick={eventClick}
+            />
+        </div>
     )
 }
 
