@@ -31,43 +31,24 @@ const NavBar = () => {
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
 
                 <Dropdown>
-        <Dropdown.Toggle variant="success">
-          Select price range
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-        <Dropdown.Item href="/">
-          All Events
-          </Dropdown.Item>
-          <Dropdown.Item href="/free">
-            Free events
-          </Dropdown.Item>
-          <Dropdown.Item href="/midRange">
-          £0-£10
-          </Dropdown.Item>
-          <Dropdown.Item href="/expensive">
-          Above £10
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-                
-  
-                
-                {/* <NavbarBrand href="/events">Events</NavbarBrand>
-                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
-                
-                {/* <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/events">Events</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="/venues">Venues</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Signup</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse> */}
+                    <Dropdown.Toggle variant="success">
+                    Select price range
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                    <Dropdown.Item href="/">
+                    All Events
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/free">
+                        Free events
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/midRange">
+                    £0-£10
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/expensive">
+                    Above £10
+                    </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </Navbar>
         </div>
     );

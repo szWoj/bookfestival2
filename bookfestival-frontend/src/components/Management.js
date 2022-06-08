@@ -1,10 +1,15 @@
 
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, PureComponent} from 'react'
 import AuthorService from '../services/AuthorService'
 import BookService from '../services/BookService'
 import BookingService from '../services/BookingService'
 import CustomerService from '../services/CustomerService'
 import EventService from '../services/EventService'
+import { Chart } from "react-google-charts";
+
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+
 
 const Management = () => {
     const[authors, setAuthors] = new useState([])
@@ -76,16 +81,49 @@ const Management = () => {
 
     let eventsBooked = getEventsBooked();
 
+    const data1 = [
+        ["Quantity", "Quantity"],
+        ["Number of Authors", authors.length],
+        ["Number of Books", books.length],
+        ["Number of Events", events.length],
+        ["Number of Bookings", bookings.length],
+        ["Number of Events Booked", eventsBooked],
+        ["Number of Customers", customers.length],
+        
+      ];
+      
+      const options1 = {
+        title: "Numbers of the festival",
+        chartArea: { width: "50%" },
+        colors: ["#b0120a"],
+        hAxis: {
+          title: "Numbers of the festival",
+          minValue: 0,
+        },
+        vAxis: {
+          title: "Numbers of the festival",
+        },
+      };
+
+
     return (
     <>
         <h1>Management Info</h1>
-        <p>Number of Authors = {authors.length}</p>
+        {/* <p>Number of Authors = {authors.length}</p>
         <p>Number of Books = {books.length}</p>
         <p>Number of Events = {events.length}</p>
-        <p>Number of Bookings = {bookings.length}</p>
+        <p>Number of Bookings = {bookings.length}</p> */}
         <p>Revenue = £{revenue}</p>
-        <p>Number of Events Booked = {eventsBooked}</p>
-        <p>Number of Customers = {customers.length}</p>
+        {/* <p>Number of Events Booked = {eventsBooked}</p>
+        <p>Number of Customers = {customers.length}</p> */}
+        <Chart
+      chartType="BarChart"
+      width="100%"
+      height="400px"
+      data={data1}
+      options={options1}
+    />
+        
     </>
     )
 

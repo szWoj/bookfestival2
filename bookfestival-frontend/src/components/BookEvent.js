@@ -56,13 +56,15 @@ const BookEvent = () => {
         .then(res => {
                 console.log(res);
                 console.log(res.data);
-                setExistingCustomer(res.data) // ?res.data[0] //I only want to fire this off when existingCustomer is populated with not empty data
+                setExistingCustomer(res.data) 
                 console.log(existingCustomer);
+                
                 if(res.data == ""){
                     console.log("Customer not in db")
-                    axios.post(`${process.env.REACT_APP_POSTING_A_NEW_CUSTOMER}`, {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
+                    axios.post(`${process.env.REACT_APP_POSTING_A_NEW_CUSTOMER}`, 
+                    {name: name.name, phoneNumber: phoneNumber.phoneNumber, email: email.email})
                     .then(res => {
-                        // console.log(res);
+                        
                         console.log(res.data);
                         setNewCustomer(res.data)
                         console.log(newCustomer);
@@ -103,8 +105,6 @@ const BookEvent = () => {
         })
         console.log(booking)
         clearFields();
-
-        clearFields();
     }
     const postBookingExistingCustomer = () => {
         const booking = {
@@ -131,7 +131,7 @@ const BookEvent = () => {
     
     
     const sendEmailConfirm = (evt) => {
-        evt.preventDefault(); // Prevents default refresh by the browser
+        evt.preventDefault(); 
         emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_PUBLIC_KEY}`)
         .then((result) => {
             console.log(result.text);
