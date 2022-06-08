@@ -65,7 +65,7 @@ const BookEvent = () => {
                     .then(res => {
                         // console.log(res);
                         console.log(res.data);
-                        setNewCustomer(res.data)
+                        setNewCustomer(res.data);
                         console.log(newCustomer);
                     })
                 }
