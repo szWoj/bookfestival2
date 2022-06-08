@@ -11,15 +11,16 @@ import {
     Nav,
     NavbarBrand
 } from 'reactstrap';
+import { hover } from '@testing-library/user-event/dist/hover';
 // import { whenTransitionDone } from 'fullcalendar';
 const NavBar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
         <div style={{
-            display: 'inline', width: '100%', position: 'fixed'
+            display: 'inline', width: '100%', display: 'block', position: 'fixed', zIndex: 9
         }}>
             <Navbar style={{backgroundColor:'#D6D5C9'}} light expand="md">
-            <img src={require("./images/BOOKME.png")} className="logo"></img>
+            <a href="/"><img src={require("./images/BOOKME.png")} className="logo" ></img></a>
                 <NavbarBrand href="/" style={{color: 'red', fontSize: '2.2em', borderRadius: '5px', fontFamily: 'Hind Madurai, sans-serif'}}>Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <NavbarBrand href="/venues" style={{color: 'red', fontSize: '2.2em', borderRadius: '5px', fontFamily: 'Hind Madurai, sans-serif'}}>Venue</NavbarBrand>
@@ -43,7 +44,7 @@ const NavBar = () => {
                     </Nav>
                 </Collapse> */}
             </Navbar>
-        </div >
+        </div>
     );
 }
 export default NavBar;
