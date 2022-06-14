@@ -17,7 +17,6 @@ import Management from './components/Management';
 
 
 
-
 function App(){
 
 
@@ -36,6 +35,7 @@ function App(){
              <Route exact path="/midRange" element={<FilteredEvents2/>}/>
              <Route exact path="/expensive" element={<FilteredEvents3/>}/>
              <Route exact path="/management" element={<Management/>}/>
+
            </Routes>
       </Router></>  
     );
