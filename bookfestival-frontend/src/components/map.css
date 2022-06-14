@@ -1,9 +1,11 @@
 .map-h2 {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: x-large;
     padding: 20px;
-    padding-left: 10px;
+    padding-top: 125px;
     text-align: center;
+    color:red;
+    font-family: 'Hind Madurai', sans-serif;
   }
   
   #map {
@@ -26,4 +28,28 @@
     font-size: 1.3em;
   }
   
+  .table-header {
+    color:red;
+    align-content: center;
+  }
+
+  .table {
+    padding: 30px;;
+  }
+
+  .table-title{
+    color: red;
+    font-family: 'Hind Madurai', sans-serif;
+    
+  }
+
+.table{
+  color: red;
+  font-family: 'Hind Madurai', sans-serif;
+}
+  
+.revenue{
+  font-family: 'Hind Madurai', sans-serif;
+  text-align: center;
+}
   

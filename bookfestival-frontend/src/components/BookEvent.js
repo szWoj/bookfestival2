@@ -5,6 +5,7 @@ import axios from "axios";
 import CustomerService from "../services/CustomerService";
 import { Link } from "react-router-dom";
 import emailjs from '@emailjs/browser';
+import NavBar from './NavBar';
 
 
 const BookEvent = () => {
@@ -64,7 +65,7 @@ const BookEvent = () => {
                     .then(res => {
                         // console.log(res);
                         console.log(res.data);
-                        setNewCustomer(res.data)
+                        setNewCustomer(res.data);
                         console.log(newCustomer);
                     })
                 }
@@ -74,12 +75,10 @@ const BookEvent = () => {
     const handleSubmit = (evt) => {
 
         evt.preventDefault();
-
         findOutTheCustomer();
-
         sendEmailConfirm(evt)
 
-        clearFields();
+        
 
 
         
@@ -107,8 +106,9 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+        clearFields();
 
-
+        clearFields();
     }
     const postBookingExistingCustomer = () => {
         const booking = {
@@ -121,6 +121,8 @@ const BookEvent = () => {
             console.log(res.data);
         })
         console.log(booking)
+
+        clearFields();
     }
 
     const clearFields = () => {
@@ -148,27 +150,40 @@ const BookEvent = () => {
     return ( 
         
         <>
-        <h1>Book Event</h1>
-        <p>{event.title}</p>
+        <div><NavBar/></div>
+        <div className="book">
+        <div className="book2">
+        <h1 className="book-event-title">Book Event</h1>
+        <div className="book-container">
+        <p className="booking-event-title">{event.title}</p>
         <p>Date & time: {event.dateTime}</p>
         <p>Price: £{event.price}</p>
-        <form ref={form} onSubmit={sendEmailConfirm}>
-            <label>
+        <form ref={form} onSubmit={sendEmailConfirm} >
+            <label className="lable">
             Name
             </label>
+            <br></br>
             <input type="text" name="name" id="name" onChange={handleNameChange}></input>
+            <br></br>
             <label>
             Phone number
             </label>
+            <br></br>
             <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePhoneNumberChange}></input>
+            <br></br>
             <label>
             Email Address
             </label>
+            <br></br>
             <input type="text" name="email" id="email" onChange={handleEmailChange}></input>
-            <button onClick={handleSubmit}>Book Event</button>
+            <br></br>
+            <br></br>
+            <button onClick={handleSubmit} class="book-button">Book Event</button>
+            <br></br>
+            <br></br>
             { existingCustomer == "" ?
-            <Link to={`/calendar/${newCustomer.id}`}>View Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`}>View Calendar</Link>}
-        </form>
+            <Link className='view-calendar'to={`/calendar/${newCustomer.id}`}>View Your Calendar</Link> : <Link to={`/calendar/${existingCustomer[0].id}`} className='view-calendar'>View Calendar</Link>}
+        </form></div></div></div>
         </>
     )
     }

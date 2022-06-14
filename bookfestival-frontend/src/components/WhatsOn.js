@@ -3,6 +3,7 @@ import EventService from '../services/EventService';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router';
 import "./whatson.css"
+import NavBar from "./NavBar";
 
 
 
@@ -33,6 +34,7 @@ const Home = () => {
             return eventTitle.includes(query);
         });
     }
+
     
 
     const eventsList = filterEvents(events, query).map(event => {
@@ -48,10 +50,14 @@ const Home = () => {
 
     return (
         <div>
-            <div className = "search-bar">
-                <input placeholder="Search" onChange={event => setQuery(event.target.value)}/>
-            </div>
+        <div>
+       <NavBar/></div>
+        <img src={require("./images/Banner-BookFestival.png")} className="banner"></img>
+            
             <h1 className="whats-on">What's On</h1>
+            <div className = "search-bar">
+                <input placeholder="Search" onChange={event => setQuery(event.target.value)} />
+            </div>
             <div className = "whats-on-container">
                 {eventsList}
             </div>

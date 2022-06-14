@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import VenueService from '../services/VenueService';
 import { Loader } from "@googlemaps/js-api-loader"
 import './map.css';
-
+import NavBar from './NavBar';
 
 function VenueComponent() {
 
@@ -54,9 +54,11 @@ function VenueComponent() {
 
 
 
-    return (
-        <div className = "container">
+    return <>
+    <div>
+       <NavBar/></div>
 
+        <div className = "container">
             <h2 className="map-h2">Come and Visit Us At the Edinburgh College of Art</h2>
              <div id="map">
              </div>
@@ -64,8 +66,8 @@ function VenueComponent() {
             <table className = "table table-striped">
                 <thead>
                     <tr>
-                        <th> Venue name</th>
-                        <th> Venue address</th>
+                        <th className="table-title"> Venue name</th>
+                        <th className="table-title"> Venue address</th>
                     </tr>
 
                 </thead>
@@ -80,16 +82,14 @@ function VenueComponent() {
 
                         )
                     }
-
                 </tbody>
-
-
             </table>
+            <br></br>
 
             
 
-        </div>
-    )
+        </div></>
+    
 }
 
 export default VenueComponent;
