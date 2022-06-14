@@ -11,8 +11,12 @@ import {
     Nav,
     NavbarBrand
 } from 'reactstrap';
-import { hover } from '@testing-library/user-event/dist/hover';
+
+import Dropdown from 'react-bootstrap/Dropdown';
+
+// import { hover } from '@testing-library/user-event/dist/hover';
 // import { whenTransitionDone } from 'fullcalendar';
+
 const NavBar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
@@ -30,19 +34,25 @@ const NavBar = () => {
                 {/* <NavbarBrand href="/events">Events</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} /> */}
                 
-                {/* <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/events">Events</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="/venues">Venues</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Signup</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse> */}
+                <Dropdown>
+                  <Dropdown.Toggle variant="success">
+                    Select price range
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                  <Dropdown.Item href="/">
+                    All Events
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/free">
+                      Free events
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/midRange">
+                    £0-£10
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/expensive">
+                    Above £10
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+              </Dropdown>
             </Navbar>
         </div>
     );

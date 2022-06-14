@@ -78,10 +78,6 @@ const BookEvent = () => {
         findOutTheCustomer();
         sendEmailConfirm(evt)
 
-        
-
-
-        
     }
 
     useEffect(() => {
